@@ -8,7 +8,7 @@ class Api::PostsController < ApplicationController
     if @post.save
       render json: @post
     else
-      render json: {errors: @post.errors}. status: :uprocessable_entity
+      render json: {errors: @post.errors}, status: :uprocessable_entity
     end
   end
 
@@ -18,14 +18,14 @@ class Api::PostsController < ApplicationController
     if @post.update(post_params)
       render json: @post
     else
-      render json: {errors: @post.errors}. status: :uprocessable_entity
+      render json: {errors: @post.errors}, status: :uprocessable_entity
     end
   end
 
 
   def destroy
-    Post.find(params[:id].destroy)
-    redner json: {message: 'post deleted'}
+    Post.find(params[:id]).destroy
+    render json: { message: 'post deleted'}
   end
 private
 
